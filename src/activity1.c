@@ -1,18 +1,16 @@
-#include <activity1.h>
-#include <avr/io.h>
+#include "activity1.h"
 
-int main(void)
+void chngledstate(uint8_t state)
 {
+	LED_PORT = (state << LED_PIN);	/* Switch State*/
+}
 
-    DDRB |= (1<<PB0);
-    DDRC &= ~(1<<PC0);
-    PORTC |= (1<<PC0);
-    while(1)
-    {
-     if ((PINC & (1<<PC0)) == 1)
-        PORTB |= (1<<PB0);
-     else
-        PORTB &= ~(1<<PB0);
-    }
-    return 0;
+void ledinit(void)					/* Configure LED Pin, heater pin and seat pin*/
+{
+	DDRB |= (1 << LED_PIN);			//Set B0 for LED
+	DDRD &=~(1<<seat_pin);			//Clear bit for seat
+	DDRD &=~(1<<heater_pin);		//Clear bit for heater
+	
+	seat_port|=(1<<seat_pin);		//Set bit for seat
+	heater_port|=(1<<heater_pin);	//Set bit for heater
 }
