@@ -2,10 +2,8 @@
 #define __ACTIVITY1_H_
 
 /*Include files*/
-#include <avr/io.h>     // HEADER FILE FOR ATMEGA328
+#include <avr/io.h>     // avr header file
 
-void led_init(void);   // IMPLEMENTATION OF ACTIVITY 1
-void init_pins(void);   // INITIALIZATION OF GPIO PINS
+void led_init(void);   // switches on led if both seat and heater on
 
 #endif /** __ACTIVITY1_H_ */
-
