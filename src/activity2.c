@@ -57,7 +57,7 @@ void ADC_interface(void)
     
     if((PIND & (1<<PD0)) == 1 )
     {
-        PORTB |= (1<<PB1);
+        PORTB |= (1<<PB0);
         read_adc(0);
         compare_adc();
         _delay_ms(200);     
