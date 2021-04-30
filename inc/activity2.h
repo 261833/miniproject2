@@ -1,44 +1,21 @@
+/**
+ * @file activity2.h
+ * @author Prachi Tanna
+ * @brief header file 2
+ * @version 0.1
+ * @date 2021-04-30
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef __ACTIVITY2_H__
 #define __ACTIVITY2_H__
 
-/*Macro Definitions*/
-#define LED_PORT (PORTB)        //LED Port Number 
-#define LED_PIN  (PORTB0)       //LED Pin number
+#include <avr/io.h>     // header file for avr processors
+#include <util/delay.h> // header for delay function
 
-#define seat_port (PORTD)       //Switch for seat Port Number
-#define seat_pin (PORTD1)       //Switch for seat Pin Number
+void init_adc(void);    // initialize adc
+uint16_t read_adc(uint8_t ch);   // read the adc 
+void ADC_interface(void);   // implementation of activity 2 & 3
 
-#define heater_port (PORTD)     //Switch for heater Port Number
-#define heater_pin (PORTD0)     //Switch for heater Pin Number
-   
-#define PWM_PORT (PORTD)        //PWM Port Number
-#define PWM_PIN (PORTD6)        //PWM Output Pin Number
-#define PWM_Output (OCR0A)
-
-#define LED_ON 	(0x01)			//LED state HIGH
-#define LED_OFF	(0x00)			//LED state LOW
-
-#define LED_ON_TIME     (20)    //LED ON time (in ms)
-#define LED_OFF_TIME    (20)    //LED OFF time (in ms)
-
-#define F_CPU 16000000UL 	    /**< Clock Frequency of MCU is 16 MHz */
-
-/*Include files*/
-#include <avr/io.h>
-#include <util/delay.h>
-
-/*Function Declaration*/
-/**
- * @brief ADC Initialisation
- * 
- */
-void adc_init(void);
-
-/**
- * @brief Selection of ADC Channel and A to D Conversion
- * 
- * @return uint16_t Digital Value
- */
-uint16_t ReadADC(uint8_t);
-
-#endif  /** __ACTIVITY2_H_ */
+#endif
