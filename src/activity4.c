@@ -35,7 +35,6 @@ char read_usart()
 {
     while(!(UCSR0A & (1<<RXC0)))
     {
-      //do nothing
     }
     return UDR0;
 }
@@ -49,7 +48,6 @@ void write_usart(char data)
 {
     while(!(UCSR0A & (1<<UDRE0)))
     {
-        //do nothing
     }
     UDR0 = data;
 }
