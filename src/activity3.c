@@ -30,7 +30,7 @@ void init_pwm(void)
  */
 void init_pin_pwm(void)
 {
-    DDRD |= (1<<PD6);      // set PD6 for output
+    DDRB |= (1<<PB1);      // set PB1 for output
 }
 
 /**
