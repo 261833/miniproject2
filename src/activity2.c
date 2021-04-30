@@ -12,8 +12,6 @@
 #include "activity2.h"
 #include "activity3.h"
 #include "activity4.h"
-
-
 /**
  * @brief ADC initialize
  * 
@@ -21,7 +19,6 @@
 void init_adc(void)
 {   ADMUX=(1<<REFS0);
     ADCSRA=(1<<ADEN)|(7<<ADPS0);
-
 }
 /**
  * @brief Reading analog data from ADC 
@@ -37,18 +34,13 @@ uint16_t read_adc(uint8_t ch)
     ADMUX |= ch;
     //conversion
     ADCSRA |= (1<<ADSC);
-
- 
     while(!(ADCSRA & (1<<ADIF)));
     ADCSRA |= (1<<ADIF);
-
-    // returns the digital value corresponding to analog
+    // returns digital value
     return (ADC);
-
 }
 /**
- * @brief If we have recieved the data from the ADC, we generate the duty cycle according to the 
- * digital value
+ * @brief Duty cycle generated corresponding to digital value
  */
 void ADC_interface(void)
 {    
@@ -57,12 +49,12 @@ void ADC_interface(void)
     init_adc();
     DDRD &= ~(1<<PD0);     //PORTD0 input pin
     DDRC &= ~(1<<PC0);     //PORTC0 input pin
-    DDRB |= (1<<PB1);      //PORTB1 output pin
+    DDRB |= (1<<PB0);      //PORTB0 output pin
 
     PORTB = 0x00;
 
-    // if we have converted the data on ADC pin
-
+    // in case data is converted on ADC port
+    
     if((PIND & (1<<PD0)) == 1 )
     {
         PORTB |= (1<<PB1);
@@ -76,4 +68,3 @@ void ADC_interface(void)
         ADCL=0x00;
     }
 }
-
