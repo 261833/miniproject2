@@ -1,16 +1,26 @@
 #include "activity1.h"
-
-void chngledstate(uint8_t state)
-{
-	LED_PORT = (state << LED_PIN);	/* Switch State*/
+/**
+ * @brief To initialise the pins
+ * 
+ */
+void init_pins(void){
+    DDRD &= ~(1<<PD0);  // input switch
+    DDRD &= ~(1<<PD1);  // input switch
+    DDRB |= (1<<PB1);   // output switch
 }
-
-void ledinit(void)					/* Configure LED Pin, heater pin and seat pin*/
-{
-	DDRB |= (1 << LED_PIN);			//Set B0 for LED
-	DDRD &=~(1<<seat_pin);			//Clear bit for seat
-	DDRD &=~(1<<heater_pin);		//Clear bit for heater
-	
-	seat_port|=(1<<seat_pin);		//Set bit for seat
-	heater_port|=(1<<heater_pin);	//Set bit for heater
+/**
+ * @brief To check whether both the switches are ON, if yes, LED is turned ON
+ * Else, LED is turned OFF
+ * 
+ */
+void led_init(void){
+    // If both switches on
+    if(((PIND & (1<<PD0)) && (PIND & (1<<PD1))) == 1)
+	{
+        PORTB |= (1<<PB1);  // LED on
+    }
+    else
+	{
+        PORTB &= ~(1<<PB1); // LED off
+    }
 }
