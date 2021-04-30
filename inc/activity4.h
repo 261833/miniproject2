@@ -1,5 +1,5 @@
-#ifndef __ACT4_H_
-#define __ACT4_H_
+#ifndef __ACTIVITY4_H_
+#define __ACTIVITY4_H_
 
 /*Macro Definitions*/
 #define LED_PORT (PORTB)        //LED Port Number 
@@ -40,4 +40,4 @@ void usart_init(uint16_t baud_rate);
  */
 void USART_write(char);
 
-#endif  /** __ACT4_H_ */
+#endif  /** __ACTIVITY4_H_ */
