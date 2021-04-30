@@ -20,9 +20,8 @@
  */
 int main(void)
 {
-    init_pins();
-    while(1){
-
+    while(1)
+    {
         led_init();           // GPIO interface
         ADC_interface();     // ADC and PWM interface
         send_usart();       // USART interface
