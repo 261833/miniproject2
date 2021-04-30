@@ -1,5 +1,5 @@
 # Embedded C Activity 
-## Vehicle Seat Heateing Application
+## Vehicle Seat Heating Application
 ### CI and Code Quality
 
 |Build|Cppcheck|Codacy|
