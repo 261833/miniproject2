@@ -1,19 +1,14 @@
 #include "activity1.h"
 /**
- * @brief To initialise the pins
- * 
- */
-void init_pins(void){
-    DDRD &= ~(1<<PD0);  // input switch
-    DDRD &= ~(1<<PD1);  // input switch
-    DDRB |= (1<<PB0);   // output switch
-}
-/**
- * @brief To check whether both the switches are ON, if yes, LED is turned ON
+ * @brief To initialise and check whether both the switches are ON, if yes, LED is turned ON
  * Else, LED is turned OFF
  * 
  */
-void led_init(void){
+void led_init(void)
+{
+    DDRD &= ~(1<<PD0);  // input switch (seat)
+    DDRD &= ~(1<<PD1);  // input switch (heater)
+    DDRB |= (1<<PB0);   // output switch
     // If both switches on
     if(((PIND & (1<<PD0)) && (PIND & (1<<PD1))) == 1)
 	{
